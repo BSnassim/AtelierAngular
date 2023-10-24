@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { UsersComponent } from './users/users.component';
-import { UserslistComponent } from './userslist/userslist.component';
-import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { MainInvoiceComponent } from './main-invoice/main-invoice.component';
-import { InvoiceComponent } from './invoice/invoice.component';
+import { UserModule } from './features/user/user.module';
+import { ProductModule } from './features/product/product.module';
+import { InvoiceModule } from './features/invoice/invoice.module';
+import { FournisseurModule } from './features/fournisseur/fournisseur.module';
 
 const routes: Routes = [
   { path: 'home', component: HeaderComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'listUsers', component: UserslistComponent },
-  { path: 'mainInvoice', component: MainInvoiceComponent},
-  { path: 'invoice', component: InvoiceComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path:'fournisseur/:id',component:FournisseurComponent},
+  { path: 'user', loadChildren: () => UserModule},
+  { path: 'product', loadChildren: () => ProductModule},
+  { path: 'invoice', loadChildren: () => InvoiceModule},
+  { path: 'fournisseur', loadChildren: () => FournisseurModule},
   { path: '**', component: NotfoundComponent }
   
 ];
