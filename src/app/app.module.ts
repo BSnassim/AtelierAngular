@@ -7,6 +7,8 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
