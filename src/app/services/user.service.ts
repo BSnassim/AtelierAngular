@@ -4,7 +4,7 @@ import { Observable, observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 
-const apiUrl = environment.api + "/users/";
+const api = environment.api + "/users/";
 @Injectable({
   providedIn: 'root'
 })
@@ -22,23 +22,24 @@ export class UserService {
   //   });
   // }
 
-  fetchNbInList(list: any, attribute:string, attributeVal: string){
-    return list.filter( (e:any) => e[attribute] == attributeVal).length;
+  fetchNbInList(list: any, attribute: string, attributeVal: string) {
+    return list.filter((e: any) => e[attribute] === attributeVal).length;
   }
 
-  fetchAllUsers(){
-    return this.http.get(apiUrl);
+  fetchAllUsers() {
+    return this.http.get(api);
   }
 
-  addUser(body: User){
-    return this.http.post(apiUrl, body);
+  fetchUserById(id: number) {
+    return this.http.get<User>(api + id);
   }
-
-  updateUser(body: User, id : number){
-    return this.http.put(apiUrl, body);
+  addUser(body: User) {
+    return this.http.post(api, body);
   }
-
-  deleteUser(id : number){
-    return this.http.delete(apiUrl+id);
+  updateUser(id: number, body: User) {
+    return this.http.put(api + id, body);
+  }
+  deleteUser(id: number) {
+    return this.http.delete(api + id);
   }
 }

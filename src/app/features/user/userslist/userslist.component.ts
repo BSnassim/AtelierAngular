@@ -23,7 +23,7 @@ export class UserslistComponent implements OnInit{
 
   deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe( {
-      next: () => (this.listusers = this.listusers.filter((u) => u.idCustomer != id)),
+      next: () => (this.listusers = this.listusers.filter((u) => u.id != id)),
       error: (e) =>console.log(e)
     });
   }
